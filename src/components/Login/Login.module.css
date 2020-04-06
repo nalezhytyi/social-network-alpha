@@ -1,0 +1,7 @@
+.loginBlock {
+    display: flex;
+}
+.loginForm__error {
+    border: 2px solid red;
+    color: red;
+}

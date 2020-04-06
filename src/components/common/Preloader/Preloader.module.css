@@ -1,0 +1,7 @@
+.preloader {
+    display: flex;            /* establish flex container */
+    flex-direction: column;   /* align children vertically (column format) */
+    justify-content: center;  /* center children vertically */
+    align-items: center;
+
+}

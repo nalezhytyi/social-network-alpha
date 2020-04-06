@@ -1,0 +1,9 @@
+.renderField {
+
+}
+.renderField__error textarea, .renderField__error input {
+    border: 2px solid red;
+}
+.renderField__error {
+    color: red;
+}

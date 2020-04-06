@@ -1,0 +1,31 @@
+/*.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}*/
+.dialogs {
+    display: flex;
+    justify-content: center;
+
+}
+
+.dialogsItem {
+    padding: 0px 30px;
+}
+
+.dialogsItem img.dialogItemAvatar {
+    width: 50px;
+    border-radius: 50px;
+}
+
+
+.dialogName {
+    text-decoration: none;
+}
+
+.dialogsItem .dialog .active {
+    color: #61dbfb;
+}
+
+.messages {
+
+}

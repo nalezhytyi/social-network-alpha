@@ -1,0 +1,28 @@
+.profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__description {
+    margin: 30px;
+}
+
+.profile__photo {
+
+}
+
+.profile__photo img {
+    border-radius: 50%;
+    width: 300px;
+}
+
+.status {
+    font-weight: 300;
+}
+
+.status__input {
+
+}
