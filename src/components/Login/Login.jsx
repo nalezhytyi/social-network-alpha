@@ -8,12 +8,12 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <div className={s.loginForm}>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <Field placeholder='Email' validate={[required, email]} name="email" type={"email"}
+                    <Field placeholder='Email' validate={[required, email]} name="email" type="email"
                            component={Input}/>
                 </div>
                 <div>
@@ -23,6 +23,8 @@ const LoginForm = ({handleSubmit, error}) => {
                 <div>
                     <Field component={Input} name="rememberMe" type="checkbox"/> remember me
                 </div>
+                {captchaUrl && <img src={captchaUrl} alt="captcha"/>}
+                {captchaUrl && <Field placeholder='Symbols from image' component={Input} name='captcha' validate={[required]}/>}
                 {error && <div className={s.loginForm__error}>
                 {error}
                 </div>}
@@ -36,9 +38,9 @@ const LoginForm = ({handleSubmit, error}) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = ({login, isAuth}) => {
+const Login = ({login, isAuth, captchaUrl}) => {
     const onSubmit = (formData) => {
-        login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     };
     if (isAuth) {
         return <Redirect to={"/profile"}/>
@@ -47,13 +49,14 @@ const Login = ({login, isAuth}) => {
         <div className={s.loginBlock}>
             <div>
                 <h1>Login</h1>
-                <LoginReduxForm onSubmit={onSubmit}/>
+                <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
             </div>
         </div>
     )
 };
 
 const mapStateToProps = (state) => ({
+    captchaUrl: state.auth.captchaUrl,
     isAuth: state.auth.isAuth
 });
 

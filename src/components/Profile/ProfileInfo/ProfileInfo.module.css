@@ -10,13 +10,13 @@
     margin: 30px;
 }
 
-.profile__photo {
-
-}
-
 .profile__photo img {
     border-radius: 50%;
     width: 300px;
+}
+
+img.profile__owner_image:hover {
+    filter: blur(2px);
 }
 
 .status {
@@ -26,3 +26,13 @@
 .status__input {
 
 }
+
+.contacts {
+    padding-left: 10px;
+}
+
+.edit__form_error {
+    border: 2px solid red;
+    color: red;
+}
+

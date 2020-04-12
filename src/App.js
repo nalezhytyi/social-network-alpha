@@ -8,7 +8,7 @@ import NavbarContainer from "./components/Navbar/NavbarContainer";
 import News from './components/News/News'
 import Music from './components/Music/Music'
 import Login from "./components/Login/Login"
-import {BrowserRouter, Route, withRouter} from "react-router-dom"
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom"
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
     faUserCircle,
@@ -46,19 +46,25 @@ class App extends React.Component {
             <div className="app-wrapper">
                 <NavbarContainer/>
                 <div className="app-wrapper-content">
-                    <Route path='/dialogs'
-                           render={withSuspense(DialogsContainer)}/>
-                    <Route path='/profile/:userId?'
-                           render={withSuspense(ProfileContainer)}/>
-                    <Route path='/users'
-                           render={() => <UsersContainer/>
-                           }/>
-                    <Route path='/news'
-                           render={() => <News/>}/>
-                    <Route path='/music'
-                           render={() => <Music/>}/>
-                    <Route path='/login'
-                           render={() => <Login/>}/>
+                    <Switch>
+                        <Route exact path='/'
+                        render={() => <Redirect to={"/profile"}/>}/>
+                        <Route path='/dialogs'
+                               render={withSuspense(DialogsContainer)}/>
+                        <Route path='/profile/:userId?'
+                               render={withSuspense(ProfileContainer)}/>
+                        <Route path='/users'
+                               render={() => <UsersContainer/>
+                               }/>
+                        <Route path='/news'
+                               render={() => <News/>}/>
+                        <Route path='/music'
+                               render={() => <Music/>}/>
+                        <Route path='/login'
+                               render={() => <Login/>}/>
+                        <Route path='*'
+                               render={() => <div>404 page no found</div>}/>
+                    </Switch>
                 </div>
             </div>
         )

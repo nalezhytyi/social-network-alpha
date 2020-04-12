@@ -30,8 +30,6 @@ let User = ({user, follow, unfollow, followingInProgress}) => {
                 }
             </div>
         </div>
-
-
     )
 };
 
