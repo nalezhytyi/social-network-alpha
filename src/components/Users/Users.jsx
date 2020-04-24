@@ -5,6 +5,7 @@ import s from "./Users.module.css";
 import Preloader from "../common/Preloader/Preloader";
 
 
+
 let Users = (props) => {
     return <div>
         <Paginator onPageChanged={props.onPageChanged}
@@ -22,10 +23,7 @@ let Users = (props) => {
                           unfollow={props.unfollow}
                           followingInProgress={props.followingInProgress}/>)}
             </div>}
-
-
     </div>
-
 };
 
 

@@ -6,33 +6,98 @@ import {Input} from "../common/RenderField/RenderField";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import Avatar from "@material-ui/core/Avatar";
+import LockIcon from '@material-ui/icons/Lock';
+import Typography from "@material-ui/core/Typography";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
 
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import Checkbox from "@material-ui/core/Checkbox";
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+}));
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
+    const classes = useStyles();
     return (
-        <div className={s.loginForm}>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <Field placeholder='Email' validate={[required, email]} name="email" type="email"
+        <Container component="main" maxWidth="xs" className={s.loginForm}>
+                <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <LockIcon/>
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography>
+                </div>
+                <form onSubmit={handleSubmit} className={classes.form}>
+
+                    <Field margin="normal"
+                           required
+                           fullWidth
+                           id="email"
+                           autoFocus
+                           autoComplete="email"
+                           label="Email Address"
+                           validate={[required, email]} name="email" type="email"
                            component={Input}/>
-                </div>
-                <div>
-                    <Field placeholder='Password' validate={[required]} name="password" type="password"
+
+
+                    <Field margin="normal"
+                           required
+                           autoComplete="current-password"
+                           fullWidth
+                           label="Password"
+                           validate={[required]} name="password" type="password"
                            component={Input}/>
-                </div>
-                <div>
-                    <Field component={Input} name="rememberMe" type="checkbox"/> remember me
-                </div>
-                {captchaUrl && <img src={captchaUrl} alt="captcha"/>}
-                {captchaUrl && <Field placeholder='Symbols from image' component={Input} name='captcha' validate={[required]}/>}
-                {error && <div className={s.loginForm__error}>
-                {error}
-                </div>}
-                <div>
-                    <button>Login</button>
-                </div>
-            </form>
-        </div>
+
+
+                    <FormControlLabel control={<Field component={Checkbox} name="rememberMe" type="checkbox"/>}
+                                      label='Remember me'
+                    />
+                    {captchaUrl && <img src={captchaUrl} alt="captcha"/>}
+                    {captchaUrl &&
+                    <Field placeholder='Symbols from image' component={Input} name='captcha' validate={[required]}/>}
+                    {error && <div className={s.loginForm__error}>
+                        {error}
+                    </div>}
+
+                    <Button className={classes.submit} fullWidth disableElevation color='primary' variant='contained'
+                            type='submit'>Sign In</Button>
+                    <Grid container>
+                        <Grid item xs>
+                            <Link target='_blank' href="https://social-network.samuraijs.com/login" variant="body2">
+                                Forgot password?
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link target='_blank' href="https://social-network.samuraijs.com/signUp" variant="body2">
+                                {"Don't have an account? Sign Up"}
+                            </Link>
+                        </Grid>
+                    </Grid>
+                </form>
+        </Container>
     )
 };
 
@@ -47,10 +112,7 @@ const Login = ({login, isAuth, captchaUrl}) => {
     }
     return (
         <div className={s.loginBlock}>
-            <div>
-                <h1>Login</h1>
-                <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
-            </div>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
         </div>
     )
 };

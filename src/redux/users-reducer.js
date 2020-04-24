@@ -1,5 +1,6 @@
-import {usersAPI} from "../api/api";
+import {profileAPI, usersAPI} from "../api/api";
 import {updateObjectInArray} from "../utilities/helpers";
+
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -8,15 +9,16 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+const SET_IS_FOLLOWED = 'SET_IS_FOLLOWED';
 
 let initialState = {
     users: [],
-    pageSize: 16,
+    pageSize: 21,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: []
-
+    followingInProgress: [],
+    followedProfile: []
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -24,13 +26,14 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: true}),
+                followedProfile: action.followedProfile
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false})
-
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false}),
+                followedProfile: action.followedProfile
             };
         case SET_USERS: {
             return {
@@ -59,13 +62,19 @@ const usersReducer = (state = initialState, action) => {
                     : state.followingInProgress.filter(id => id !== action.userId)
             };
         }
+        case SET_IS_FOLLOWED: {
+            return {
+                ...state,
+                followedProfile: action.followedProfile
+            }
+        }
         default:
             return state;
     }
 };
 
-export const followSuccess = (userId) => ({type: FOLLOW, userId});
-export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId});
+export const followSuccess = (userId, followedProfile) => ({type: FOLLOW, userId, followedProfile});
+export const unfollowSuccess = (userId, followedProfile) => ({type: UNFOLLOW, userId, followedProfile});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setUsersTotalCount = (totalUsersCount) => ({type: SET_USERS_TOTAL_COUNT, count: totalUsersCount});
@@ -75,8 +84,14 @@ export const toggleIsFollowingProgress = (isFetching, userId) => ({
     isFetching,
     userId
 });
+export const setFollowedProfile = (followedProfile) => ({type: SET_IS_FOLLOWED, followedProfile});
 
 //thunk creators
+export const getIsFollowed = (userId) => async (dispatch) => {
+    let response = await profileAPI.getIsFollowed(userId);
+    dispatch(setFollowedProfile(response.data));
+};
+
 export const requestUsers = (page, pageSize) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));

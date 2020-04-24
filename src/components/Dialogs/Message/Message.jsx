@@ -1,14 +1,18 @@
 import React from "react";
-import s from "../Dialogs.module.css";
+import {Card} from "@material-ui/core";
+import CardContent from "@material-ui/core/CardContent";
+import s from './Message.module.css'
+
 
 const Message = (props) => {
+
     return (
-        <div className={s.message}>
-            <div className={s.messages}>
-                {props.message}
-            </div>
-        </div>
-    );
-}
+        <Card className={s.messages__item}>
+            <CardContent>
+            {props.message}
+            </CardContent>
+        </Card>
+    )
+};
 
 export default Message;

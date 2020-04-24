@@ -1,0 +1,6 @@
+.messages__item {
+    margin-bottom: 15px;
+}
+.messages__form {
+    display: flex;
+}

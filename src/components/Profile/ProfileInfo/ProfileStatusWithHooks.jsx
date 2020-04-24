@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import s from "./ProfileInfo.module.css"
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 
 const ProfileStatusWithHooks = (props) => {
@@ -24,16 +26,15 @@ const ProfileStatusWithHooks = (props) => {
 
     return (
         <div>
-            <b>Status:</b>
             {!editMode &&
-            <div className={s.status}>
+            <Typography variant='h6' color='textSecondary' className={s.status}>
                  <span onClick={props.isOwner && activateEditMode}>{props.status || "no status"}</span>
-            </div>
+            </Typography>
             }
             {editMode &&
-            <div className={s.status__input}>
-                <input onChange={onStatusChange} value={status} autoFocus={true} onBlur={deactivateEditMode}/>
-            </div>
+            <Typography className={s.status__input}>
+                <TextField helperText='Click anywhere to save your new status' fullWidth size='small' onChange={onStatusChange} value={status} autoFocus={true} onBlur={deactivateEditMode} label="Status :" id="standard-textarea"/>
+            </Typography>
             }
         </div>
     )

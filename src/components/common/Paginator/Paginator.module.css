@@ -1,22 +1,15 @@
 .pagination {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    text-align: center;
 }
 
 .pagination span {
+    padding: 5px;
     cursor: pointer;
     margin: 3px;
-
 }
 
 .selected_page {
     font-weight: bold;
-}
-
-.page_number {
-    padding: 5px;
-    box-shadow: 0 0 5px lightgrey;
 
 }
+

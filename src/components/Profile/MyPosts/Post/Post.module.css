@@ -1,5 +1,21 @@
-.item img {
-    width: 3.3em;
-
+.postForm {
+    display: flex;
+    align-items: center;
 }
 
+.likeCount {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.postCard {
+    margin: 15px;
+}
+
+.postUser {
+    display: flex;
+    align-items: center;
+}
+.postName {
+    padding-left: 15px;
+}

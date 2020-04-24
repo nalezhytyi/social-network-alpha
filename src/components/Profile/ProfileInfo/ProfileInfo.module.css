@@ -1,38 +1,77 @@
-.profile__info {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile__description {
-    margin: 30px;
-}
-
-.profile__photo img {
+.photo img {
     border-radius: 50%;
     width: 300px;
+    box-shadow: 0 0 40px lightgrey;
 }
 
-img.profile__owner_image:hover {
-    filter: blur(2px);
+.profile__firstItem {
+    text-align: center;
 }
 
-.status {
-    font-weight: 300;
+.ownerPhoto {
+    position: relative;
 }
 
-.status__input {
+.ownerPhoto img {
+    opacity: 1;
+    max-width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
 
+.ownerPhoto__upload {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.ownerPhoto:hover img {
+    opacity: 0.3;
+}
+
+.ownerPhoto:hover .ownerPhoto__upload {
+    opacity: 1;
+}
+
+.ownerPhoto__upload_icon {
+    font-size: 70px;
+    cursor: pointer;
+
+}
+
+.ownerPhoto_input {
+    display: none;
 }
 
 .contacts {
-    padding-left: 10px;
+    display: inline;
 }
 
 .edit__form_error {
     border: 2px solid red;
     color: red;
 }
+.profileDataFormButtons {
+    display: inline;
+}
+.aboutMe {
+    display: flex;
+}
+.info__label {
+    width: 180px;
+}
+.status {
+    cursor: pointer;
+}
+.lookingForAJob {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 
