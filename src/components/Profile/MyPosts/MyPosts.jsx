@@ -22,7 +22,7 @@ const MyPosts = props => {
             <CardContent>
                 <Typography variant='h5' color="textSecondary">My posts</Typography>
             </CardContent>
-                <Card className={s.addposr}>
+                <Card>
                     <AddPostReduxForm profile={props.profile} onSubmit={addNewPost}/>
                 </Card>
 

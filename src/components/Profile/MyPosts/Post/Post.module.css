@@ -1,6 +1,10 @@
 .postForm {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+.postForm_input {
+    flex: 1;
 }
 
 .likeCount {

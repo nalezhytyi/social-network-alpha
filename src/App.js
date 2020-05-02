@@ -8,7 +8,7 @@ import NavbarContainer from "./components/Navbar/NavbarContainer";
 import News from './components/News/News'
 import Music from './components/Music/Music'
 import Login from "./components/Login/Login"
-import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom"
+import {BrowserRouter, HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom"
 import {library} from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import {
@@ -93,11 +93,11 @@ const mapStateToProps = (state) => ({
 let AppContainer = compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);
 
 const JSApp = () => {
-    return <BrowserRouter>
+    return <HashRouter basename={process.env.PUBLIC_URL}>
         <Provider store={store}>
             <AppContainer/>
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 };
 
 export default JSApp;
