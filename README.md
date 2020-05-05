@@ -1,7 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Enter site
 
-enter the site
-login: free@samuraijs.com password: free. 
+login: free@samuraijs.com 
+password: free. 
 
 ## Available Scripts
 
