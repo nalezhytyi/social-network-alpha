@@ -1,9 +1,7 @@
 ## Enter site
-
-login: free@samuraijs.com 
-password: free. 
-
+Adaptive
 ![](adaptive.gif)
+![](`login:logout.gif`)
 
 ## Available Scripts
 
