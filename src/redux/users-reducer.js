@@ -13,7 +13,7 @@ const SET_IS_FOLLOWED = 'SET_IS_FOLLOWED';
 
 let initialState = {
     users: [],
-    pageSize: 21,
+    pageSize: 18,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,

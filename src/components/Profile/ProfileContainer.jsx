@@ -14,6 +14,7 @@ import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 import {follow, getIsFollowed, toggleIsFollowingProgress, unfollow} from "../../redux/users-reducer";
 import Preloader from "../common/Preloader/Preloader";
+import {logout} from "../../redux/auth-reducer";
 
 
 class ProfileContainer extends React.Component {
@@ -43,7 +44,6 @@ class ProfileContainer extends React.Component {
 
 
     render() {
-        debugger
         return (
             <div className={s.profile}>
                 {this.props.isFetching ?
@@ -80,7 +80,7 @@ let mapStateToProps = (state) => ({
 export default compose(
     connect(mapStateToProps, {
         follow, unfollow, toggleIsFollowingProgress,
-        getUserProfile, getStatus, updateStatus, savePhoto, saveProfile, getIsFollowed
+        getUserProfile, getStatus, updateStatus, savePhoto, saveProfile, getIsFollowed, logout
     }),
     withRouter,
     withAuthRedirect)

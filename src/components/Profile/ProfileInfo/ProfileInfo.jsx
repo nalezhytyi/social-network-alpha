@@ -14,21 +14,21 @@ import Dialog from "@material-ui/core/Dialog";
 import Grow from "@material-ui/core/Grow";
 
 
-
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile, follow, unfollow, followed, getIsFollowed, followingInProgress }) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile, follow, unfollow, followed, getIsFollowed, followingInProgress, logout}) => {
 
     const [editMode, setEditMode] = useState(false);
+    /*const [isFollowed, setIsFollowed] = useState([]);
 
     useEffect(() => {
         getIsFollowed(profile.userId)
-    });
+
+    });*/
 
     const onSubmit = (formData) => {
         saveProfile(formData).then(() => {
             setEditMode(false);
         })
     };
-debugger
     return (
         <Card className={s.profile__info_container}>
             <CardContent>
@@ -59,9 +59,9 @@ debugger
                                             }} disabled={editMode}>Edit Profile</Button>
                                 </div>
                                 :
-                                <div>
+                                <div className={s.buttonContainer}>
                                     {followed &&
-                                    <Button disableElevation color="secondary" variant="contained"
+                                    <Button className={s.button} disableElevation color="secondary" variant="contained"
                                             disabled={followingInProgress.some(id => id === profile.userId)}
                                             onClick={() => {
                                                 unfollow(profile.userId);
@@ -69,7 +69,7 @@ debugger
                                         Unfollow
                                     </Button>}
                                     {!followed &&
-                                    <Button disableElevation color="primary" variant="contained"
+                                    <Button className={s.button} disableElevation color="primary" variant="contained"
                                             disabled={followingInProgress.some(id => id === profile.userId)}
                                             onClick={() => {
                                                 follow(profile.userId);
@@ -84,7 +84,7 @@ debugger
                                         mountOnEnter
                                         open={editMode} onClose={() => {
                                     setEditMode(false)
-                                }}><ProfileDataForm cancelEditMode={() => {
+                                }}><ProfileDataForm logout={logout} cancelEditMode={() => {
                                     setEditMode(false)
                                 }} initialValues={profile} profile={profile} onSubmit={onSubmit}/></Dialog> :
                                 <ProfileData profile={profile} isOwner={isOwner}/>}

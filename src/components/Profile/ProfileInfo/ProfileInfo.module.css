@@ -73,5 +73,10 @@
     display: flex;
     justify-content: space-evenly;
 }
-
+.buttonContainer {
+    width: 100%;
+}
+.button {
+    width: 33%;
+}
 

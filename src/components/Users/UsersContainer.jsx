@@ -6,10 +6,10 @@ import {
     toggleIsFollowingProgress,
     requestUsers
 } from "../../redux/users-reducer";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import Users from "./Users";
 /*import {withAuthRedirect} from "../../hoc/WithAuthRedirect";*/
-import {compose} from "redux";
+import { compose } from "redux";
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -23,15 +23,14 @@ import {
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        const {currentPage, pageSize} = this.props;
+        const { currentPage, pageSize } = this.props;
         this.props.getUsers(currentPage, pageSize);
     }
 
     onPageChanged = (pageNumber) => {
-        const {pageSize} = this.props;
+        const { pageSize } = this.props;
         this.props.setCurrentPage(pageNumber);
-        this.props.getUsers(pageNumber,pageSize);
-
+        this.props.getUsers(pageNumber, pageSize);
     };
 
     render() {
@@ -70,7 +69,7 @@ export default compose(
         toggleIsFollowingProgress,
         getUsers: requestUsers
     }),
-   /* withAuthRedirect*/)
+    /* withAuthRedirect*/)
 (UsersContainer);
 
 

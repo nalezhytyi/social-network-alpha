@@ -38,7 +38,7 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, porti
 
     return (
         <div className={s.pagination}>
-            <IconButton disableRipple size="small" className={s.pagination__button} disabled={portionNumber === 1}
+            <IconButton disableRipple size="small" disabled={portionNumber === 1}
                         onClick={handleFirstPageButtonClick}>
                 <FirstPageIcon/>
             </IconButton>
@@ -46,14 +46,17 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, porti
             <IconButton disableRipple size="small" disabled={portionNumber === 1}
                         onClick={handleBackButtonClick}><KeyboardArrowLeft/></IconButton>}
             {pages.filter(p => p >= leftPortionNumber && p <= rightPortionNumber).map((p) => {
-                return <Button disableElevation size='small' variant={currentPage === p && "contained"}  className={cn({[s.selected_page]: currentPage === p}, s.page_number)} key={p}
-                             onClick={(e) => {
-                                 onPageChanged(p);
-                             }}>{p}</Button>
+                return <Button disableElevation size='small' variant={currentPage === p && "contained"}
+                               className={cn({[s.selected_page]: currentPage === p}, s.page_number)} key={p}
+                               onClick={(e) => {
+                                   onPageChanged(p);
+                               }}>{p}</Button>
             })}
             {portionCount >= portionNumber &&
-            <IconButton disableRipple size="small" disabled={portionNumber === portionCount} onClick={handleNextButtonClick}><KeyboardArrowRight/></IconButton>}
-            <IconButton disableRipple size="small" disabled={portionNumber === portionCount} onClick={handleLastPageButtonClick}>
+            <IconButton disableRipple size="small" disabled={portionNumber === portionCount}
+                        onClick={handleNextButtonClick}><KeyboardArrowRight/></IconButton>}
+            <IconButton disableRipple size="small" disabled={portionNumber === portionCount}
+                        onClick={handleLastPageButtonClick}>
                 <LastPageIcon/>
             </IconButton>
         </div>

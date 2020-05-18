@@ -5,14 +5,12 @@ import s from "./Users.module.css";
 import Preloader from "../common/Preloader/Preloader";
 
 
-
 let Users = (props) => {
     return <div>
         <Paginator onPageChanged={props.onPageChanged}
                    currentPage={props.currentPage}
                    totalItemsCount={props.totalUsersCount}
                    pageSize={props.pageSize}/>
-
         {props.isFetching ?
             <Preloader/>
             : <div className={s.users__parent}>

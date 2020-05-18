@@ -1,18 +1,18 @@
 import React from "react";
 import s from "./User.module.css";
 import userPhoto from '../../assets/images/avatar.png'
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 
-let User = ({user, follow, unfollow, followingInProgress}) => {
+let User = ({ user, follow, unfollow, followingInProgress }) => {
     return (
         <Card className={s.users__child}>
             <div className={s.user__child_photo}>
                 <NavLink to={'/profile/' + user.id}>
-                    <img src={user.photos.small != null ? user.photos.small : userPhoto} alt=""/>
+                    <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="" />
                 </NavLink>
                 <Typography className={s.users__child_name}>
                     {user.name}
@@ -24,12 +24,12 @@ let User = ({user, follow, unfollow, followingInProgress}) => {
 
             <div className={s.followed__container}>
                 {user.followed ?
-                    <Button disableElevation color="secondary" variant="contained"
+                    <Button className={s.button} disableElevation color="secondary" variant="contained"
                             disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
                         unfollow(user.id);
                     }}>Unfollow</Button>
                     :
-                    <Button disableElevation color="primary" variant="contained"
+                    <Button className={s.button} disableElevation color="primary" variant="contained"
                             disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
                         follow(user.id);
                     }}>Follow</Button>

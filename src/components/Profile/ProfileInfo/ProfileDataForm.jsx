@@ -11,8 +11,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 
-const ProfileDataForm = ({profile, handleSubmit, error, cancelEditMode}) => {
-    debugger
+const ProfileDataForm = ({profile, handleSubmit, error, cancelEditMode, logout}) => {
     return <form onSubmit={handleSubmit}>
         <DialogTitle dividers><Typography color='textSecondary'>EDIT INFORMATION</Typography></DialogTitle>
         <DialogContent dividers>
@@ -59,9 +58,10 @@ const ProfileDataForm = ({profile, handleSubmit, error, cancelEditMode}) => {
                 </Grid>
             </Grid>
         </DialogContent>
-        <DialogActions>
-            <Button disableElevation color='secondary' onClick={cancelEditMode}>Cancel</Button>
-            <Button disableElevation variant='contained' color='primary' type={submit}>Save</Button>
+        <DialogActions className={s.buttonContainer}>
+            <Button className={s.button} disableElevation color='secondary' onClick={logout}>Logout</Button>
+            <Button className={s.button} disableElevation variant='contained' color='secondary' onClick={cancelEditMode}>Cancel</Button>
+            <Button className={s.button} disableElevation variant='contained' color='primary' type={submit}>Save</Button>
         </DialogActions>
     </form>
 };

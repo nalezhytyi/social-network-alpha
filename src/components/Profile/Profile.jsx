@@ -25,6 +25,7 @@ const Profile = (props) => {
                     followingInProgress={props.followingInProgress}
                     followed={props.followed}
                     getIsFollowed={props.getIsFollowed}
+                    logout={props.logout}
                 />
             <MyPostsContainer/>
         </div>

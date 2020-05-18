@@ -1,3 +1,6 @@
 .dialogName {
     text-decoration: none;
 }
+.dialogItem {
+    margin: 15px;
+}
