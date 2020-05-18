@@ -3,7 +3,8 @@
 login: free@samuraijs.com 
 password: free. 
 
-![](profile:edit.gif)
+![](adaptive.gif)
+
 ## Available Scripts
 
 In the project directory, you can run:
