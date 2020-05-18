@@ -4,7 +4,7 @@
 ## Profile (change photo, add posts)
 ![](profilePhotoPosts.gif)
 
-## Login Logout
+## Login
 ![](loginLogout.gif)
 
 ## Users (following)
