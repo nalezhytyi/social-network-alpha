@@ -1,28 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import s from "./ProfileInfo.module.css"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataForm from "./ProfileDataForm";
 import ProfilePhoto from "./ProfilePhoto";
 import ProfileData from "./ProfileData";
-import Card from "@material-ui/core/Card";
-import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import { Card, Grid, CardContent, Typography, Button, Dialog, Grow } from "@material-ui/core";
 import ProfileContacts from "./ProfileContacts";
-import Dialog from "@material-ui/core/Dialog";
-import Grow from "@material-ui/core/Grow";
 
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile, follow, unfollow, followed, getIsFollowed, followingInProgress, logout}) => {
+const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, saveProfile, follow, unfollow, followed, followingInProgress, logout }) => {
 
     const [editMode, setEditMode] = useState(false);
-    /*const [isFollowed, setIsFollowed] = useState([]);
-
-    useEffect(() => {
-        getIsFollowed(profile.userId)
-
-    });*/
 
     const onSubmit = (formData) => {
         saveProfile(formData).then(() => {
@@ -30,16 +18,16 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
         })
     };
     return (
-        <Card className={s.profile__info_container}>
+        <Card>
             <CardContent>
                 <Grid container spacing={1} direction="row">
-                    <Grid lg={1}/>
+                    <Grid lg={1} />
                     <Grid item xs={12} md={6} lg={5} className={s.profile__firstItem}>
                         <CardContent>
-                            <ProfilePhoto profile={profile} isOwner={isOwner} savePhoto={savePhoto}/>
+                            <ProfilePhoto profile={profile} isOwner={isOwner} savePhoto={savePhoto} />
                         </CardContent>
                         <CardContent>
-                            <ProfileContacts profile={profile}/>
+                            <ProfileContacts profile={profile} />
                         </CardContent>
                     </Grid>
                     <Grid item xs={12} md={6} lg={5}>
@@ -47,10 +35,9 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                             <Typography gutterBottom variant='h3'>
                                 {profile.fullName}
                             </Typography>
-                            <ProfileStatusWithHooks status={status} updateStatus={updateStatus} isOwner={isOwner}/>
+                            <ProfileStatusWithHooks status={status} updateStatus={updateStatus} isOwner={isOwner} />
                         </CardContent>
                         <CardContent>
-
                             {isOwner ?
                                 <div>
                                     <Button disableElevation variant="contained"
@@ -86,11 +73,11 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                                     setEditMode(false)
                                 }}><ProfileDataForm logout={logout} cancelEditMode={() => {
                                     setEditMode(false)
-                                }} initialValues={profile} profile={profile} onSubmit={onSubmit}/></Dialog> :
-                                <ProfileData profile={profile} isOwner={isOwner}/>}
+                                }} initialValues={profile} profile={profile} onSubmit={onSubmit} /></Dialog> :
+                                <ProfileData profile={profile} isOwner={isOwner} />}
                         </CardContent>
                     </Grid>
-                    <Grid lg={1}/>
+                    <Grid lg={1} />
                 </Grid>
             </CardContent>
         </Card>
