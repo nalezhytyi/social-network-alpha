@@ -1,7 +1,18 @@
-## Enter site
-Adaptive
+## Profile (edit profile)
+![](profileEdit.gif)
+
+## Profile (change photo, add posts)
+![](profilePhotoPosts.gif)
+
+## Login
+![](loginLogout.gif)
+
+## Users (following)
+![](usersFollowing.gif)
+
+## Adaptive
 ![](adaptive.gif)
-![](`login:logout.gif`)
+
 
 ## Available Scripts
 
