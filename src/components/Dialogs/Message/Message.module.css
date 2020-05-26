@@ -1,6 +1,13 @@
-.messages__item {
+.messagesItem {
     margin-bottom: 15px;
 }
-.messages__form {
+
+.messagesForm {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.messagesForm_input {
+    flex: 1;
 }

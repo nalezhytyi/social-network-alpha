@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
 .postForm_input {
     flex: 1;
 }
@@ -20,6 +21,7 @@
     display: flex;
     align-items: center;
 }
+
 .postName {
     padding-left: 15px;
 }

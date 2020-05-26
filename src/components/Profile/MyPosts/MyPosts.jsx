@@ -1,16 +1,16 @@
 import React from 'react';
 import Post from './Post/Post';
-import {AddPostReduxForm} from "./Post/AddPostForm";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-
+import { AddPostReduxForm } from "./Post/AddPostForm";
+import { Card, CardContent, Typography } from "@material-ui/core/";
 
 const MyPosts = props => {
-
-    let postElements = [...props.posts].reverse().map(p => <Post profile={props.profile} message={p.message}
-                                                                 like={p.like} key={p.id}/>);
-
+    let postElements = [...props.posts].reverse().map(p =>
+        <Post
+            profile={props.profile}
+            message={p.message}
+            like={p.like}
+            key={p.id} />
+    );
     let addNewPost = (values) => {
         if (values.newPostBody === undefined || values.newPostBody === '') {
             alert('You must enter some text!');
@@ -23,10 +23,12 @@ const MyPosts = props => {
     return (
         <div>
             <CardContent>
-                <Typography variant='h5' color="textSecondary">My posts</Typography>
+                <Typography variant='h5' color="textSecondary">
+                    My posts
+                </Typography>
             </CardContent>
             <Card>
-                <AddPostReduxForm profile={props.profile} onSubmit={addNewPost}/>
+                <AddPostReduxForm profile={props.profile} onSubmit={addNewPost} />
             </Card>
             {postElements}
         </div>

@@ -1,15 +1,13 @@
 import React from "react";
-import {Card} from "@material-ui/core";
-import CardContent from "@material-ui/core/CardContent";
+import { Card, CardContent } from "@material-ui/core";
 import s from './Message.module.css'
 
 
 const Message = (props) => {
-
     return (
-        <Card className={s.messages__item}>
+        <Card className={s.messagesItem}>
             <CardContent>
-            {props.message}
+                {props.message}
             </CardContent>
         </Card>
     )

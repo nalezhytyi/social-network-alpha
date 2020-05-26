@@ -2,10 +2,7 @@ import React from "react";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import { AddMessageReduxForm } from "./Message/AddMessageForm";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Grid from "@material-ui/core/Grid";
-
+import { Card, CardContent, Grid } from "@material-ui/core/";
 
 const Dialogs = (props) => {
     let state = props.dialogsPage;
@@ -22,16 +19,14 @@ const Dialogs = (props) => {
                 {dialogElements}
             </Grid>
             <Grid item xs={12} md={9} lg={8}>
-                <Card>
-                    <CardContent>
-                        {messageElements}
-                        <AddMessageReduxForm onSubmit={addNewMessage} />
-                    </CardContent>
-                </Card>
+                <CardContent>
+                    {messageElements}
+                    <AddMessageReduxForm onSubmit={addNewMessage} />
+                </CardContent>
             </Grid>
         </Grid>
     )
-};
+}
 
 
 export default Dialogs;
