@@ -1,7 +1,6 @@
 import React from "react";
-import s from './Profile.module.css';
 import Profile from "./Profile";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import {
     getStatus,
     getUserProfile,
@@ -9,16 +8,15 @@ import {
     saveProfile,
     updateStatus
 } from "../../redux/profile-reducer";
-import {withRouter} from "react-router-dom";
-import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
-import {compose} from "redux";
-import {follow, getIsFollowed, toggleIsFollowingProgress, unfollow} from "../../redux/users-reducer";
+import { withRouter } from "react-router-dom";
+import { withAuthRedirect } from "../../hoc/WithAuthRedirect";
+import { compose } from "redux";
+import { follow, getIsFollowed, toggleIsFollowingProgress, unfollow } from "../../redux/users-reducer";
 import Preloader from "../common/Preloader/Preloader";
-import {logout} from "../../redux/auth-reducer";
+import { logout } from "../../redux/auth-reducer";
 
 
 class ProfileContainer extends React.Component {
-
     refreshProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
@@ -42,26 +40,25 @@ class ProfileContainer extends React.Component {
         }
     }
 
-
     render() {
         return (
-            <div className={s.profile}>
+            <div>
                 {this.props.isFetching ?
-                    <Preloader/>
-                    :
-                    <Profile {...this.props}
-                             savePhoto={this.props.savePhoto}
-                             isOwner={!this.props.match.params.userId}
-                             profile={this.props.profile}
-                             status={this.props.status}
-                             updateStatus={this.props.updateStatus}
-                             follow={this.props.follow}
-                             unfollow={this.props.unfollow}
-                             followingInProgress={this.props.followingInProgress}
-                             followed={this.props.followed}
-                             isFetching={this.props.isFetching}
-                             getIsFollowed={this.props.getIsFollowed}
-                    />}
+                    <Preloader /> :
+                    <Profile
+                        {...this.props}
+                        savePhoto={this.props.savePhoto}
+                        isOwner={!this.props.match.params.userId}
+                        profile={this.props.profile}
+                        status={this.props.status}
+                        updateStatus={this.props.updateStatus}
+                        follow={this.props.follow}
+                        unfollow={this.props.unfollow}
+                        followingInProgress={this.props.followingInProgress}
+                        followed={this.props.followed}
+                        isFetching={this.props.isFetching}
+                        getIsFollowed={this.props.getIsFollowed} />
+                }
             </div>
         );
     };

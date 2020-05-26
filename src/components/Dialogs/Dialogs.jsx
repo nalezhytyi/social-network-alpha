@@ -8,13 +8,9 @@ import Grid from "@material-ui/core/Grid";
 
 
 const Dialogs = (props) => {
-
     let state = props.dialogsPage;
-
     let dialogElements = state.dialogsArray.map(d => <DialogItem name={d.name} key={d.id} id={d.id} />);
     let messageElements = state.messagesArray.map(m => <Message key={m.id} message={m.message} />);
-
-
     let addNewMessage = (values) => {
         props.sendMessage(values.newMessageBody);
         values.newMessageBody = '';

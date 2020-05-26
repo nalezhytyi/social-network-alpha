@@ -16,7 +16,7 @@ const ProfileDataForm = ({profile, handleSubmit, error, cancelEditMode, logout})
         <DialogTitle dividers><Typography color='textSecondary'>EDIT INFORMATION</Typography></DialogTitle>
         <DialogContent dividers>
             <Grid container direction="row">
-                <Grid item xs={12} md={6} lg={6} className={s.profile__firstItem}>
+                <Grid item xs={12} md={6} lg={6} className={s.profileFirstItem}>
                     <DialogContent className={s.profileDataForm__container}>
                         {error && <div className={s.edit__form_error}>
                             {error}
