@@ -10,7 +10,7 @@
 ## Users (following)
 ![](usersFollowing.gif)
 
-## Adaptive
+## Responsive/mobile
 ![](adaptive.gif)
 
 
