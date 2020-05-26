@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Post.module.css"
 import { Field, reduxForm } from "redux-form";
 import { Textarea } from "../../../common/RenderField/RenderField";
-import { CardActions, CardContent, IconButton, Avatar } from "@material-ui/core/";
+import { CardActions, CardContent, IconButton, Avatar } from "@material-ui/core";
 import { Send } from "@material-ui/icons";
 
 const AddPostForm = props => {

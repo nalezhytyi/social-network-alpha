@@ -2,7 +2,7 @@ import React from "react";
 import s from "./User.module.css";
 import userPhoto from '../../assets/images/avatar.png'
 import { NavLink } from "react-router-dom";
-import { Card, Button, Typography } from "@material-ui/core/";
+import { Card, Button, Typography } from "@material-ui/core";
 
 
 let User = ({ user, follow, unfollow, followingInProgress }) => {
@@ -44,7 +44,7 @@ let User = ({ user, follow, unfollow, followingInProgress }) => {
             </div>
         </Card>
     )
-};
+}
 
 export default User;
 

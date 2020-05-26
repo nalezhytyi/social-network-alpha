@@ -3,7 +3,7 @@ import { Card, CardContent } from "@material-ui/core";
 import s from './Message.module.css'
 
 
-const Message = (props) => {
+const Message = props => {
     return (
         <Card className={s.messagesItem}>
             <CardContent>

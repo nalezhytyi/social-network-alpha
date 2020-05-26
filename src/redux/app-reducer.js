@@ -1,4 +1,4 @@
-import {isUserAuth} from "./auth-reducer";
+import { isUserAuth } from "./auth-reducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 

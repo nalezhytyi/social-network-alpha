@@ -8,7 +8,6 @@ import {
 } from "../../redux/users-reducer";
 import { connect } from "react-redux";
 import Users from "./Users";
-/*import {withAuthRedirect} from "../../hoc/WithAuthRedirect";*/
 import { compose } from "redux";
 import {
     getCurrentPage,
@@ -19,9 +18,9 @@ import {
     getUsers
 } from "../../redux/users-selectors";
 
+/*import {withAuthRedirect} from "../../hoc/WithAuthRedirect";*/
 
 class UsersContainer extends React.Component {
-
     componentDidMount() {
         const { currentPage, pageSize } = this.props;
         this.props.getUsers(currentPage, pageSize);
@@ -31,20 +30,20 @@ class UsersContainer extends React.Component {
         const { pageSize } = this.props;
         this.props.setCurrentPage(pageNumber);
         this.props.getUsers(pageNumber, pageSize);
-    };
+    }
 
     render() {
         return <>
-            <Users totalUsersCount={this.props.totalUsersCount}
-                   pageSize={this.props.pageSize}
-                   users={this.props.users}
-                   currentPage={this.props.currentPage}
-                   onPageChanged={this.onPageChanged}
-                   follow={this.props.follow}
-                   unfollow={this.props.unfollow}
-                   followingInProgress={this.props.followingInProgress}
-                   isFetching={this.props.isFetching}
-            />
+            <Users
+                totalUsersCount={this.props.totalUsersCount}
+                pageSize={this.props.pageSize}
+                users={this.props.users}
+                currentPage={this.props.currentPage}
+                onPageChanged={this.onPageChanged}
+                follow={this.props.follow}
+                unfollow={this.props.unfollow}
+                followingInProgress={this.props.followingInProgress}
+                isFetching={this.props.isFetching} />
         </>
     }
 }

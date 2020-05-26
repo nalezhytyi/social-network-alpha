@@ -2,7 +2,7 @@ import * as axios from "axios";
 
 const instance = axios.create({
     withCredentials: true,
-    headers: {"API-KEY": "f684ac3c-5e2f-414f-8421-78edd01b8359"},
+    headers: { "API-KEY": "f684ac3c-5e2f-414f-8421-78edd01b8359" },
     baseURL: `https://social-network.samuraijs.com/api/1.0/`
 });
 
@@ -12,11 +12,9 @@ export const usersAPI = {
             return response.data;
         })
     },
-
     follow(userId) {
         return instance.post(`follow/${userId}`, {})
     },
-
     unfollow(userId) {
         return instance.delete(`follow/${userId}`)
     },
@@ -31,12 +29,13 @@ export const authAPI = {
         return instance.get(`auth/me`)
     },
     login(email, password, rememberMe = false, captcha) {
-        return instance.post(`auth/login`, {email, password, rememberMe, captcha})
+        return instance.post(`auth/login`, { email, password, rememberMe, captcha })
     },
     logout() {
         return instance.delete(`auth/login`)
     }
 };
+
 export const securityAPI = {
     getCaptchaUrl() {
         return instance.get(`security/get-captcha-url`)
@@ -45,7 +44,7 @@ export const securityAPI = {
 
 export const profileAPI = {
     getIsFollowed(userId) {
-      return instance.get(`follow/${userId}`)
+        return instance.get(`follow/${userId}`)
     },
     getUserProfile(userId) {
         return instance.get(`profile/${userId}`)
@@ -54,7 +53,7 @@ export const profileAPI = {
         return instance.get(`profile/status/${userId}`)
     },
     updateStatus(status) {
-        return instance.put(`profile/status`, {status: status})
+        return instance.put(`profile/status`, { status: status })
     },
     savePhoto(photoFile) {
         const formData = new FormData();

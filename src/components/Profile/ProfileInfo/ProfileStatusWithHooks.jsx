@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import s from "./ProfileInfo.module.css"
-import {TextField, Typography} from "@material-ui/core";
+import { TextField, Typography } from "@material-ui/core";
 
-const ProfileStatusWithHooks = (props) => {
+const ProfileStatusWithHooks = props => {
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
+
     useEffect(() => {
-       setStatus(props.status);
+        setStatus(props.status);
     }, [props.status]);
 
     const activateEditMode = () => {
@@ -39,12 +40,11 @@ const ProfileStatusWithHooks = (props) => {
                     autoFocus={true}
                     onBlur={deactivateEditMode}
                     label="Status :"
-                    id="standard-textarea"/>
+                    id="standard-textarea" />
             </Typography>}
         </div>
     )
-};
-
+}
 
 export default ProfileStatusWithHooks;
 

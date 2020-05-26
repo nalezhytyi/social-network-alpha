@@ -19,7 +19,7 @@ body {
 }
 
 
-.app-wrapper-content, .app-wrapper-content_wide{
+.app-wrapper-content, .app-wrapper-content_wide {
     padding: 20px;
     transition: width 200ms ease;
 }
@@ -33,9 +33,9 @@ body {
 
 /*Small screens*/
 @media only screen and (max-width: 600px) {
- .app-wrapper-content, .app-wrapper-content_wide{
-     padding-bottom: 100px;
- }
+    .app-wrapper-content, .app-wrapper-content_wide {
+        padding-bottom: 100px;
+    }
 }
 
 /*Large screens*/
@@ -43,6 +43,7 @@ body {
     .app-wrapper-content {
         padding-left: 100px;
     }
+
     .app-wrapper-content_wide {
         padding-left: 275px;
     }

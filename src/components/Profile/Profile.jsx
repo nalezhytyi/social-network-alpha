@@ -4,7 +4,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Preloader from "../common/Preloader/Preloader";
 
 
-const Profile = (props) => {
+const Profile = props => {
     if (!props.profile) {
         return <Preloader />
     }
@@ -22,8 +22,7 @@ const Profile = (props) => {
             followingInProgress={props.followingInProgress}
             followed={props.followed}
             getIsFollowed={props.getIsFollowed}
-            logout={props.logout}
-        />
+            logout={props.logout} />
         <MyPostsContainer />
     </div>
 };

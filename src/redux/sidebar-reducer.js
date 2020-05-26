@@ -1,6 +1,5 @@
 const SET_DRAWER = 'SET_DRAWER';
 
-
 let initialState = {
     drawer: false
 };
@@ -23,7 +22,6 @@ const sidebarReducer = (state = initialState, action) => {
     }
 };
 
-
-export const setDrawer = () => ({type: SET_DRAWER});
+export const setDrawer = () => ({ type: SET_DRAWER });
 
 export default sidebarReducer;

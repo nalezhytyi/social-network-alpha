@@ -2,7 +2,7 @@ import React from "react";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import { AddMessageReduxForm } from "./Message/AddMessageForm";
-import { Card, CardContent, Grid } from "@material-ui/core/";
+import { CardContent, Grid } from "@material-ui/core";
 
 const Dialogs = (props) => {
     let state = props.dialogsPage;

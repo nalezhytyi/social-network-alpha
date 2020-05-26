@@ -4,8 +4,7 @@ import User from "./User";
 import Paginator from "../common/Paginator/Paginator";
 import Preloader from "../common/Preloader/Preloader";
 
-
-let Users = (props) => {
+let Users = props => {
     return <div>
         <Paginator
             onPageChanged={props.onPageChanged}
@@ -25,8 +24,7 @@ let Users = (props) => {
                         followingInProgress={props.followingInProgress} />)}
             </div>}
     </div>
-};
-
+}
 
 export default Users;
 

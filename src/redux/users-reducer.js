@@ -1,6 +1,5 @@
-import {profileAPI, usersAPI} from "../api/api";
-import {updateObjectInArray} from "../utilities/helpers";
-
+import { profileAPI, usersAPI } from "../api/api";
+import { updateObjectInArray } from "../utilities/helpers";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -26,13 +25,13 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: updateObjectInArray(state.users, action.userId, 'id', {followed: true}),
+                users: updateObjectInArray(state.users, action.userId, 'id', { followed: true }),
                 followedProfile: action.followedProfile
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false}),
+                users: updateObjectInArray(state.users, action.userId, 'id', { followed: false }),
                 followedProfile: action.followedProfile
             };
         case SET_USERS: {
@@ -73,18 +72,18 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const followSuccess = (userId, followedProfile) => ({type: FOLLOW, userId, followedProfile});
-export const unfollowSuccess = (userId, followedProfile) => ({type: UNFOLLOW, userId, followedProfile});
-export const setUsers = (users) => ({type: SET_USERS, users});
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
-export const setUsersTotalCount = (totalUsersCount) => ({type: SET_USERS_TOTAL_COUNT, count: totalUsersCount});
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+export const followSuccess = (userId, followedProfile) => ({ type: FOLLOW, userId, followedProfile });
+export const unfollowSuccess = (userId, followedProfile) => ({ type: UNFOLLOW, userId, followedProfile });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_USERS_TOTAL_COUNT, count: totalUsersCount });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleIsFollowingProgress = (isFetching, userId) => ({
     type: TOGGLE_IS_FOLLOWING_PROGRESS,
     isFetching,
     userId
 });
-export const setFollowedProfile = (followedProfile) => ({type: SET_IS_FOLLOWED, followedProfile});
+export const setFollowedProfile = (followedProfile) => ({ type: SET_IS_FOLLOWED, followedProfile });
 
 //thunk creators
 export const getIsFollowed = (userId) => async (dispatch) => {

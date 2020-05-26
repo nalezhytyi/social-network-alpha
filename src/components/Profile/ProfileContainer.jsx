@@ -75,10 +75,16 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-    connect(mapStateToProps, {
-        follow, unfollow, toggleIsFollowingProgress,
-        getUserProfile, getStatus, updateStatus, savePhoto, saveProfile, getIsFollowed, logout
-    }),
-    withRouter,
-    withAuthRedirect)
-(ProfileContainer)
+    connect(mapStateToProps,
+        {
+            follow,
+            unfollow,
+            toggleIsFollowingProgress,
+            getUserProfile,
+            getStatus,
+            updateStatus,
+            savePhoto,
+            saveProfile,
+            getIsFollowed,
+            logout
+        }), withRouter, withAuthRedirect)(ProfileContainer)

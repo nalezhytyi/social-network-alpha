@@ -9,12 +9,11 @@ const MyPosts = props => {
             profile={props.profile}
             message={p.message}
             like={p.like}
-            key={p.id} />
-    );
+            key={p.id} />);
     let addNewPost = (values) => {
         if (values.newPostBody === undefined || values.newPostBody === '') {
             alert('You must enter some text!');
-            return;
+            return
         }
         props.addPost(values.newPostBody);
         values.newPostBody = '';
@@ -33,5 +32,6 @@ const MyPosts = props => {
             {postElements}
         </div>
     )
-};
+}
+
 export default MyPosts;

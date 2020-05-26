@@ -4,8 +4,8 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataForm from "./ProfileDataForm";
 import ProfilePhoto from "./ProfilePhoto";
 import ProfileData from "./ProfileData";
-import { Card, Grid, CardContent, Typography, Button, Dialog, Grow } from "@material-ui/core";
 import ProfileContacts from "./ProfileContacts";
+import { Card, Grid, CardContent, Typography, Button, Dialog, Grow } from "@material-ui/core";
 /*import * as axios from "axios";
 import useEffect from "react"*/
 
@@ -118,6 +118,5 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
         </Card>
     );
 };
-
 
 export default ProfileInfo;
