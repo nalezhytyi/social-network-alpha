@@ -10,7 +10,7 @@ let User = ({ user, follow, unfollow, followingInProgress }) => {
         <Card className={s.user}>
             <div className={s.userInfo}>
                 <NavLink to={'/profile/' + user.id} class>
-                    <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="User photo" />
+                    <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="User" />
                     <Typography className={s.userName}>
                         {user.name}
                     </Typography>

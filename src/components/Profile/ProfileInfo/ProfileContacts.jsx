@@ -4,6 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { Facebook, GitHub, Instagram, Language, Twitter, YouTube, Link } from "@material-ui/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 const Contact = ({ contactTitle, contactValue }) => {
     return <div className={s.contacts}>
         <IconButton href={contactValue} target='_blank'>
@@ -19,15 +20,13 @@ const Contact = ({ contactTitle, contactValue }) => {
     </div>
 };
 
-const ProfileContacts = (profile) => {
+const ProfileContacts = ({ profile }) => {
     return <div>
-        {Object.keys(profile.contacts)
-            .filter((is) => {
-                return profile.contacts[is] != null && profile.contacts[is] !== ""
-            })
-            .map(key => {
-                return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
-            })}
+        {Object.keys(profile.contacts).filter((is) => {
+            return profile.contacts[is] != null && profile.contacts[is] !== ""
+        }).map(key => {
+            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+        })}
     </div>
 };
 

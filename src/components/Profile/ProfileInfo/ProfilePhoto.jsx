@@ -13,7 +13,7 @@ const ProfilePhoto = ({ isOwner, profile, savePhoto }) => {
 
     return (
         <div className={cn({ [s.ownerPhoto]: isOwner }, s.photo)}>
-            <img src={profile.photos.large != null ? profile.photos.large : userPhoto} alt="User photo" />
+            <img src={profile.photos.large != null ? profile.photos.large : userPhoto} alt="User" />
             {isOwner &&
             <div className={s.ownerPhoto__upload}>
                 <label>
