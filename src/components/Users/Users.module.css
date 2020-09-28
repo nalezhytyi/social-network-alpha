@@ -3,3 +3,9 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+@media screen and (max-width: 660px) {
+    .users {
+        flex-direction: column;
+    }
+}

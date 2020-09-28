@@ -8,11 +8,9 @@ const RenderField = ({ meta: { touched, error, warning }, children }) => {
         <div className={s.renderField + " " + (touched && error ? s.renderField__error : "")}>
             {children}
             {touched && ((error &&
-                <div>
-                    <span className={s.renderField__error}>
+                <span className={s.renderField__error}>
                         {error}
-                    </span>
-                </div>) || (warning && <span>{warning}</span>))}
+                </span>) || (warning && <span>{warning}</span>))}
         </div>
 
     )

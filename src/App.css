@@ -21,7 +21,7 @@ body {
 
 .app-wrapper-content, .app-wrapper-content_wide {
     padding: 20px;
-    transition: width 200ms ease;
+    transition: all 300ms ease;
 }
 
 /*Smaller screens*/
