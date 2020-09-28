@@ -3,7 +3,6 @@ import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import { AddMessageReduxForm } from './Message/AddMessageForm';
 import { CardContent, Grid } from '@material-ui/core';
-import s from './Dialogs.module.css';
 
 const Dialogs = ({ dialogsPage, sendMessage }) => {
   let state = dialogsPage;

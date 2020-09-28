@@ -1,19 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import ProfileDataForm from './ProfileDataForm';
 import ProfilePhoto from './ProfilePhoto';
 import ProfileData from './ProfileData';
 import ProfileContacts from './ProfileContacts';
-import {
-  Card,
-  Grid,
-  CardContent,
-  Typography,
-  Button,
-  Dialog,
-  Grow,
-} from '@material-ui/core';
+import { Card, Grid, CardContent, Typography, Button, Dialog, Grow } from '@material-ui/core';
 
 const ProfileInfo = ({
   profile,
@@ -27,7 +19,12 @@ const ProfileInfo = ({
   followed,
   followingInProgress,
   logout,
+  getIsFollowed,
 }) => {
+  useEffect(() => {
+    getIsFollowed(profile.userId);
+  }, [followed]);
+
   const [editMode, setEditMode] = useState(false);
   const onSubmit = formData => {
     saveProfile(formData).then(() => setEditMode(false));
@@ -65,11 +62,7 @@ const ProfileInfo = ({
           <Grid />
           <Grid item xs={12} md={6} lg={5} className={s.profileFirstItem}>
             <CardContent>
-              <ProfilePhoto
-                profile={profile}
-                isOwner={isOwner}
-                savePhoto={savePhoto}
-              />
+              <ProfilePhoto profile={profile} isOwner={isOwner} savePhoto={savePhoto} />
             </CardContent>
             <CardContent>
               <ProfileContacts profile={profile} />
