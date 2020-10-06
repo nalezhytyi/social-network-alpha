@@ -1,32 +1,44 @@
-import React from "react";
-import Navbar from "./Navbar";
-import { connect } from "react-redux";
-import { logout } from "../../redux/auth-reducer";
-import { getUserProfile } from "../../redux/profile-reducer";
-import { compose } from "redux";
-import { setDrawer } from "../../redux/sidebar-reducer";
+import React, { useEffect } from 'react';
+import Navbar from './Navbar';
+import { connect } from 'react-redux';
+import { logout } from '../../redux/auth-reducer';
+import { getUserProfile } from '../../redux/profile-reducer';
+import { compose } from 'redux';
+import { setDrawer } from '../../redux/sidebar-reducer';
 
-class NavbarContainer extends React.Component {
-    handleChange = () => {
-        this.props.setDrawer()
-    };
+const NavbarContainer = ({ setDrawer, isAuth, login, profile, drawer, logout }) => {
+  const handleChange = () => {
+    setDrawer();
+  };
 
-    render() {
-        return <Navbar
-            {...this.props}
-            handleChange={this.handleChange}
-            drawer={this.props.drawer} />
+  useEffect(() => {
+    if (profile) {
+      getUserProfile();
+      console.log(profile.photos);
     }
-}
+  }, [profile]);
 
-const mapStateToProps = (state) => {
-    return {
-        id: state.auth.userId,
-        isAuth: state.auth.isAuth,
-        login: state.auth.login,
-        profile: state.auth.myProfile,
-        drawer: state.sidebar.drawer
-    };
+  return (
+    <Navbar
+      drawer={drawer}
+      isAuth={isAuth}
+      login={login}
+      logout={logout}
+      profile={profile}
+      handleChange={handleChange}
+    />
+  );
 };
 
-export default compose(connect(mapStateToProps, { logout, getUserProfile, setDrawer }))(NavbarContainer);
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAuth,
+    login: state.auth.login,
+    profile: state.auth.myProfile,
+    drawer: state.sidebar.drawer,
+  };
+};
+
+export default compose(connect(mapStateToProps, { logout, getUserProfile, setDrawer }))(
+  NavbarContainer
+);

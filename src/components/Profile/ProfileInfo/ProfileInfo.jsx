@@ -23,7 +23,7 @@ const ProfileInfo = ({
 }) => {
   useEffect(() => {
     getIsFollowed(profile.userId);
-  }, [followed]);
+  }, [followed, getIsFollowed, profile.userId]);
 
   const [editMode, setEditMode] = useState(false);
   const onSubmit = formData => {

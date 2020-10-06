@@ -1,17 +1,10 @@
 import React from 'react';
 import './App.css';
-import ProfileContainer from './components/Profile/ProfileContainer';
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Login from './components/Login/Login';
-import {
-  HashRouter,
-  Redirect,
-  Route,
-  Switch,
-  withRouter,
-} from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -49,12 +42,9 @@ library.add(
   faUpload
 );
 
-const DialogsContainer = React.lazy(() =>
-  import('./components/Dialogs/DialogsContainer')
-);
-const UsersContainer = React.lazy(() =>
-  import('./components/Users/UsersContainer')
-);
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 class App extends React.Component {
   catchAllUnhandlesErrors = (reason, promise) => {
@@ -67,7 +57,7 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    window.addEventListener('unhandledrejection', this.catchAllUnhandlesErrors);
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandlesErrors);
   }
 
   render() {
@@ -76,31 +66,18 @@ class App extends React.Component {
     }
     return (
       <ThemeProvider theme={Theme}>
-        <div className="app-wrapper">
+        <div className='app-wrapper'>
           <NavbarContainer />
-          <div
-            className={
-              this.props.drawer
-                ? 'app-wrapper-content_wide'
-                : 'app-wrapper-content'
-            }
-          >
+          <div className={this.props.drawer ? 'app-wrapper-content_wide' : 'app-wrapper-content'}>
             <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <Redirect to={'/profile'} />}
-              />
-              <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-              <Route
-                path="/profile/:userId?"
-                render={() => <ProfileContainer />}
-              />
-              <Route path="/users" render={withSuspense(UsersContainer)} />
-              <Route path="/news" render={() => <News />} />
-              <Route path="/music" render={() => <Music />} />
-              <Route path="/login" render={() => <Login />} />
-              <Route path="*" render={() => <div>404 page no found</div>} />
+              <Route exact path='/' render={() => <Redirect to={'/profile'} />} />
+              <Route path='/dialogs' render={withSuspense(DialogsContainer)} />
+              <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)} />
+              <Route path='/users' render={withSuspense(UsersContainer)} />
+              <Route path='/news' render={() => <News />} />
+              <Route path='/music' render={() => <Music />} />
+              <Route path='/login' render={() => <Login />} />
+              <Route path='*' render={() => <div>404 page no found</div>} />
             </Switch>
           </div>
         </div>
@@ -114,10 +91,7 @@ const mapStateToProps = state => ({
   drawer: state.sidebar.drawer,
 });
 
-let AppContainer = compose(
-  withRouter,
-  connect(mapStateToProps, { initializeApp })
-)(App);
+let AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
 
 const JSApp = () => {
   return (

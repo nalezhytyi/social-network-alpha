@@ -22,9 +22,7 @@ let initialState = {
     {
       id: 2,
       message:
-        ' “That which does not kill us makes us stronger.”\n' +
-        '\n' +
-        '– Friedrich Nietzsche',
+        ' “That which does not kill us makes us stronger.”\n' + '\n' + '– Friedrich Nietzsche',
       like: '221',
     },
     {
@@ -37,10 +35,7 @@ let initialState = {
     },
     {
       id: 4,
-      message:
-        '“If opportunity doesn’t knock, build a door.”\n' +
-        '\n' +
-        '– Milton Berle',
+      message: '“If opportunity doesn’t knock, build a door.”\n' + '\n' + '– Milton Berle',
       like: '1',
     },
   ],
@@ -106,29 +101,15 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 //action creators
-export const addPostActionCreator = newPostBody => ({
-  type: ADD_POST,
-  newPostBody,
-});
+export const addPostActionCreator = newPostBody => ({ type: ADD_POST, newPostBody });
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
 export const setStatus = status => ({ type: SET_STATUS, status });
 export const deletePost = postId => ({ type: DELETE_POST, postId });
-export const savePhotoSuccess = photos => ({
-  type: SAVE_PHOTO_SUCCESS,
-  photos,
-});
+export const savePhotoSuccess = photos => ({ type: SAVE_PHOTO_SUCCESS, photos });
 export const setFollowed = followed => ({ type: SET_IS_FOLLOWED, followed });
-export const toggleIsFetching = isFetching => ({
-  type: TOGGLE_IS_FETCHING,
-  isFetching,
-});
+export const toggleIsFetching = isFetching => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 //thunk creators
-export const getIsFollowed = userId => async dispatch => {
-  let response = await profileAPI.getIsFollowed(userId);
-  dispatch(setFollowed(response.data));
-};
-
 export const getUserProfile = userId => async dispatch => {
   dispatch(toggleIsFetching(true));
   let response = await usersAPI.getUserProfile(userId);
@@ -150,10 +131,12 @@ export const updateStatus = status => async dispatch => {
   }
 };
 export const savePhoto = file => async dispatch => {
+  dispatch(toggleIsFetching(true));
   let response = await profileAPI.savePhoto(file);
   if (response.data.resultCode === 0) {
     dispatch(savePhotoSuccess(response.data.data.photos));
   }
+  dispatch(toggleIsFetching(false));
 };
 export const saveProfile = profile => async (dispatch, getState) => {
   const userId = getState().auth.userId;
