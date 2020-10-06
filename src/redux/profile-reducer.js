@@ -22,6 +22,7 @@ let initialState = {
     {
       id: 2,
       message:
+        // eslint-disable-next-line no-useless-concat
         ' “That which does not kill us makes us stronger.”\n' + '\n' + '– Friedrich Nietzsche',
       like: '221',
     },
@@ -35,6 +36,7 @@ let initialState = {
     },
     {
       id: 4,
+      // eslint-disable-next-line no-useless-concat
       message: '“If opportunity doesn’t knock, build a door.”\n' + '\n' + '– Milton Berle',
       like: '1',
     },
