@@ -16,7 +16,7 @@ let Users = ({
   followingInProgress,
 }) => {
   return (
-    <div>
+    <div className={s.usersContainer}>
       <Paginator
         onPageChanged={onPageChanged}
         currentPage={currentPage}

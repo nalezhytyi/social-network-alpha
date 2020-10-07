@@ -1,0 +1,21 @@
+.errorBoundaryContainer {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 50px;
+}
+
+.errorBoundaryContainer .errorBoundaryText {
+  padding: 15px;
+}
+
+.errorBoundaryContainer .errorBoundaryImage {
+  display: inline-block;
+  background-image: url('https://i.imgur.com/lKJiT77.png');
+  background-size: cover;
+  background-position: center;
+  width: 40vh;
+  height: 40vh;
+}

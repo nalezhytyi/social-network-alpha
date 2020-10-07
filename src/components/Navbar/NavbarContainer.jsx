@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import { connect } from 'react-redux';
 import { logout } from '../../redux/auth-reducer';
@@ -10,13 +10,6 @@ const NavbarContainer = ({ setDrawer, isAuth, login, profile, drawer, logout }) 
   const handleChange = () => {
     setDrawer();
   };
-
-  useEffect(() => {
-    if (profile) {
-      getUserProfile();
-      console.log(profile.photos);
-    }
-  }, [profile]);
 
   return (
     <Navbar

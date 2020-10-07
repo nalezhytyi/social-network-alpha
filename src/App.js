@@ -27,6 +27,7 @@ import store from './redux/redux-store';
 import { withSuspense } from './hoc/WithSuspense';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Theme from './components/common/Theme/Theme';
+import ErrorBoundary from './components/error-boundary/ErrorBoundary';
 
 library.add(
   fab,
@@ -70,14 +71,15 @@ class App extends React.Component {
           <NavbarContainer />
           <div className={this.props.drawer ? 'app-wrapper-content_wide' : 'app-wrapper-content'}>
             <Switch>
-              <Route exact path='/' render={() => <Redirect to={'/profile'} />} />
-              <Route path='/dialogs' render={withSuspense(DialogsContainer)} />
-              <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)} />
-              <Route path='/users' render={withSuspense(UsersContainer)} />
-              <Route path='/news' render={() => <News />} />
-              <Route path='/music' render={() => <Music />} />
-              <Route path='/login' render={() => <Login />} />
-              <Route path='*' render={() => <div>404 page no found</div>} />
+              <ErrorBoundary>
+                <Route exact path='/' render={() => <Redirect to={'/profile'} />} />
+                <Route path='/dialogs' render={withSuspense(DialogsContainer)} />
+                <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)} />
+                <Route path='/users' render={withSuspense(UsersContainer)} />
+                <Route path='/news' render={() => <News />} />
+                <Route path='/music' render={() => <Music />} />
+                <Route path='/login' render={() => <Login />} />
+              </ErrorBoundary>
             </Switch>
           </div>
         </div>
